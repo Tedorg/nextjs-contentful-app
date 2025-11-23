@@ -1,0 +1,10 @@
+// components/EmailTemplate.js
+import React from "react";
+
+export const EmailTemplate = ({ firstName }) => (
+  <div>
+    <h1>Welcome, {firstName}!</h1>
+  </div>
+);
+
+export default EmailTemplate;

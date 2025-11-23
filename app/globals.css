@@ -1,0 +1,130 @@
+@import url("https://use.typekit.net/ctj0yvl.css");
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "leaflet/dist/leaflet.css";
+/* 1. Font Face Declarations */
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/NeueMontreal-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+
+
+
+
+:root {
+  --background: #f1f1f1;
+  /* --background: #e2e2e2; */
+  --foreground: #313131;
+  --ui-active: #ed3422;
+  --light-foreground: #0e0e0e5f;
+  --offwhite:rgb(230 231 232);
+  --darkgreen:rgb(121 119 98);
+
+  --font-size-title: text-4xl;
+  
+  --inverse-foreground:  var(--background);
+  --font-sans: 'Neue Montreal', sans-serif;
+  --max-screen-size: 2300px;
+
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@theme {
+  --font-commons: tt-commons-pro, sans-serif;
+  --font-jensen: adobe-jenson-pro, serif;
+  --font-expo: expo-serif-pro, serif;
+  --font-geller: geller-headline, serif;
+  --font-roca: "roca",sans-serif;
+}
+
+    
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #b0b0b0;
+    --foreground: #333333;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  /* font-family: font-commons, Arial, Helvetica, sans-serif; */
+}
+
+/* 
+rgb(230 231 232/var(--tw-text-opacity,1)) 
+rgb(121 119 98/var(--tw-bg-opacity,1))
+*/
+
+@layer components {
+  .style-header {
+    @apply uppercase text-xl md:text-2xl font-commons font-medium ;
+  }
+
+  .style-opener {
+    @apply pb-10  text-3xl md:text-4xl font-geller font-medium ;
+  }
+
+  .style-lead {
+    @apply  text-xl md:text-2xl font-commons;
+  }
+
+  .style-text {
+    @apply text-lg md:text-xl font-commons ;
+  }
+
+   .style-button {
+    @apply cursor-pointer rounded-full border border-[--color-primary] text-(--color-foreground) bg-(--color-foreground) px-8 py-2 text-sm font-medium tracking-wide transition-all duration-300 hover:bg-(--ui-active) hover:text-white focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[--color-highlight]  ;
+  }
+  .style-inv-button {
+    @apply cursor-pointer rounded-full border border-[--color-primary] text-[--color-primary] px-8 py-2 text-sm font-medium tracking-wide transition-all duration-300 hover:bg-(--ui-active) hover:text-white focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[--color-highlight]  ;
+  }
+
+  
+}
+
+strong {
+  font-weight: 500;              /* or 700, etc. */
+      /* or any other color */
+  font-family: var(--font-commons);
+  letter-spacing: 0.2px;
+}
