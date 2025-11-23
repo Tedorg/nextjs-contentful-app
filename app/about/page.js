@@ -68,6 +68,7 @@ export default async function Page() {
       entry.images = res.items[0].fields.portrait.map((img) => ({
         url: `https:${img.fields.file.url}`,
         alt: img.fields.title || 'An Images',
+        description: img.fields.description || "",
         width: img.fields.file.details.image.width,
         height: img.fields.file.details.image.height,
       }))
@@ -95,6 +96,7 @@ export default async function Page() {
         ? res.items[0].fields.diplome.map((img) => ({
             url: `https:${img.fields.file.url}`,
             alt: img.fields.title || 'Diplom',
+            description: img.fields.description || "",
             width: img.fields.file.details.image.width,
             height: img.fields.file.details.image.height,
           }))
@@ -120,7 +122,7 @@ export default async function Page() {
         
                   </div>
 
-        <div className="flex flex-col md:flex-row justify-between content-start gap-10  px-4">
+        <div className="flex flex-col md:flex-row justify-evenly  gap-20  px-4">
        
           <div className=" basis-3/7 space-y-4 md:ml-10">
                 {entry.text.split("\n\n").map((paragraph, idx) => (
@@ -132,9 +134,9 @@ export default async function Page() {
             ))}
 
   </div>
-   <div className="basis-4/7 mx-auto xl:translate-x-40 xl:-translate-y-10 ">
+   <div className="basis-4/7 pl-12 md:pl-20 ">
               {entry.images.map((img, idx) => (
-                   <div key={idx} className="max-w-100 flex justify-center overflow-hidden p-3">
+                   <div key={idx} className="max-w-100 flex flex-col overflow-hidden p-3">
                      <Image
                        src={img.url}
                        alt={img.alt}
@@ -143,6 +145,11 @@ export default async function Page() {
                        loading="lazy"
                        className="object-cover h-[550px] w-auto max-w-full"
                      />
+                     {img.description && (
+                       <p className="mt-2 text-sm text-neutral-700  max-w-[80%]">
+                         {img.description}
+                       </p>
+                     )}
                    </div>
                  ))}
   </div>
@@ -200,9 +207,9 @@ export default async function Page() {
 
 
 
-        <div className="basis-5/7   mt-4 flex flex-wrap gap-4">
+        <div className="basis-4/7 pl-6 md:pl-12 flex flex-wrap gap-4">
           {diplomeImages.map((img, idx) => (
-            <div key={idx} className="mx-auto w-90 flex items-center justify-center overflow-hidden">
+            <div key={idx} className="mx-auto w-90 flex flex-col items-center justify-center overflow-hidden">
               <Image
                 src={img.url}
                 alt={img.alt}
@@ -210,6 +217,11 @@ export default async function Page() {
                 height={img.height}
                 className="object-cover max-h-120"
               />
+              {img.description && (
+                <p className="mt-2 text-sm text-neutral-700  max-w-[80%]">
+                  {img.description}
+                </p>
+              )}
             </div>
           ))}
         </div>
