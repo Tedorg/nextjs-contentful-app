@@ -19,6 +19,7 @@ export async function POST(req) {
       angebot: 'angebot',
       booking: 'booking',
       kontakt: 'kontakt',
+      faqs: 'faqs',
       // add other mappings as needed
     };
 
@@ -32,3 +33,4 @@ export async function POST(req) {
     return NextResponse.json({ error: 'Revalidation failed' }, { status: 500 });
   }
 }
+

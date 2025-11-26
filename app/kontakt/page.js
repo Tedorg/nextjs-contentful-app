@@ -5,7 +5,6 @@ import Footer from "@/components/Footer";
 import MapView from "./MapView";
 import Stagger from "./stagger"
 import Form from "./contactForm"
-import { createClient } from "contentful";
 import ReactMarkdown from "react-markdown";
 import TextReveal from "./textReveal";
 
@@ -14,21 +13,21 @@ export const generateMetadata = () => ({
   description: "Kontaktinformationen, Praxisadresse und Anreisebeschreibung zur Praxis Rahel Schmid.",
 });
 
-const client = createClient({
-  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
-});
-
 export default async function Page() {
   let kontakt = {};
 
   try {
-    const res = await client.getEntries({
-      content_type: "kontakt",
-      limit: 1,
-    });
-    
-    kontakt = res.items[0]?.fields || {};
+    const res = await fetch(
+      `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}/environments/master/entries?content_type=kontakt&limit=1`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN}`,
+        },
+        next: { tags: ['kontakt'] },
+      }
+    );
+    const data = await res.json();
+    kontakt = data.items[0]?.fields || {};
   } catch (error) {
     console.error("Error fetching content:", error);
   }
@@ -125,6 +124,19 @@ export default async function Page() {
           <div className="basis-4/7 my-10 p-3">
             {coordinates && <MapView coordinates={coordinates} />}
           </div>
+
+
+
+
+
+
+
+
+
+
+
+
+          
         </div>
       </section>
     </main>
