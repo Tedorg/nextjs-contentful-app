@@ -4,7 +4,7 @@ import { createClient } from "contentful";
 import ReactMarkdown from "react-markdown";
 
 import CmsGradient from '@/components/Gradient';
-import TextReveal from '@/components/textReveal'
+import TextReveal from '@/components/textReveals'
 import styles from "./page.module.css";
 import { MobileMenu } from "@/components/HeaderFramerMo";
 import Footer from "@/components/Footer";
@@ -27,7 +27,9 @@ export default async function Home() {
     title: "",
     text: "",
     gradients: [],
-    buttonText: ""
+    buttonText: "",
+    buttonLink:""
+
   }
 
   try {
@@ -40,7 +42,15 @@ export default async function Home() {
       if (content?.items?.[0]?.fields?.cssGradiant?.length) {
         home.gradients = content.items[0].fields.cssGradiant.map(g => g.fields?.shape).filter(Boolean);
       }
-     
+      
+      const buttonMatch = home.text.match(/\[([^\]]+)\]\(([^)]+)\)\{\:\s*\.btn\s*\}/);
+       home.text = home.text.replace(buttonMatch[0], ''); // Remove button MD from text
+          
+          if (buttonMatch) {
+           
+            home.buttonText = buttonMatch[1];
+            home.buttonLink = buttonMatch[2];
+          }
       
 
     }
@@ -69,22 +79,19 @@ export default async function Home() {
 
         {/* <div className=" absolute inset-0 bg-gradient-to-br from-orange-500 to-red-200 opacity-90 "></div>  */}
         <div className=" self-center ">
-          <div className=" w-[100%] md:w-[80%]  md:ml-20 text-red-300 mix-blend-exclusion">
-            <div className="style-opener " >
+          <div className=" w-[100%] md:w-[80%]  md:ml-20 text-foreground ">
+            <div className="text-xl md:text-2xl font-geller m-2" >
                 <TextReveal text={home.text}/>
             </div>
               {home.buttonText && (() => {
-                const parts = home.buttonText.split(",");
-                const btnLabel = parts[0]?.trim() || "";
-                const btnHref = parts[1]?.trim() || "/";
-
+                
                 return (
-                  <Link href={btnHref}>
+                  <Link href={home.buttonLink}>
                     <button
                       className="style-inv-button"
                       type="submit"
                     >
-                      {btnLabel}
+                      {home.buttonText}
                     </button>
                   </Link>
                 );

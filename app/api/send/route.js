@@ -14,7 +14,7 @@ export async function POST(req) {
 
     const formdata = await req.json();
 
-    console.log("Received form data:", formdata);
+    
 
 
 
@@ -74,7 +74,7 @@ export async function POST(req) {
 
 //     const data = await req.json();
 
-//     console.log("Received form data:", data);
+//     
 
 //     await resend.emails.send({
 //       from: 'kontakt@rahelschmid.ch', // adjust domain as needed

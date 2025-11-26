@@ -7,7 +7,7 @@ export default function TextReveal({ text, delay = 0 }) {
   const words = text.split('\n');
 
   return (
-    <div className="overflow-hidden flex flex-wrap">
+    <div className="overflow-hidden flex flex-wrap p-2">
        
       {words.map((word, i) => (
         <motion.span
@@ -22,7 +22,7 @@ export default function TextReveal({ text, delay = 0 }) {
           }}
           style={{ display: 'inline-block' }}
         >
-         <ReactMarkdown>{word}</ReactMarkdown>
+         <ReactMarkdown break>{word}</ReactMarkdown>
         </motion.span>
       ))}
      

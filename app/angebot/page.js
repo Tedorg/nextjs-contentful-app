@@ -60,7 +60,7 @@ export default async function Page() {
         )}
         <div className="flex flex-col md:flex-row ">
           {items.map((item) => (
-            <div key={item.id} className="max-w-xl border-b-[0.5px] md:border-r-[0.5px] last:border-r-0  px-4 py-8 grid grid-col  place-content-start ">
+            <div key={item.id} className="basis-1/3 md:border-r-[0.5px] last:border-r-0  px-4 py-8 grid grid-col  place-content-start ">
                 {/* Stagger will animate its children (here only one child: the title) */}
 
                 <div className="style-header py-2">{item.title}</div>
@@ -71,7 +71,7 @@ export default async function Page() {
                   <ReactMarkdown >{item.text}</ReactMarkdown>
                 </div>
 
-                  <div className=" my-10 style-text border-t-[0.5] prose prose-neutral dark:prose-invert max-w-none">
+                  <div className=" visible md:hidden border-t-[0.5px] my-10 style-text  prose prose-neutral dark:prose-invert max-w-none">
                   <ReactMarkdown >{item.info}</ReactMarkdown>
                 </div>
 
@@ -83,9 +83,33 @@ export default async function Page() {
           ))}
           
         </div>
+          <div className=" flex flex-col md:flex-row  ">
+
+                      {items.map((item) => (
+            <div key={item.id} className="basis-1/3 hidden md:block md:border-r-[0.5px] last:border-r-0  px-4 py-8 grid grid-col  place-content-start ">
+                {/* Stagger will animate its children (here only one child: the title) */}
+
+            
+     
+                {/* Wrap the markdown text in a Stagger so title and text children animate in sequence */}
+
+
+                  <div className="   my-10 style-text  prose prose-neutral dark:prose-invert max-w-none">
+                  <ReactMarkdown >{item.info}</ReactMarkdown>
+                </div>
+
+           
+              
+
+        
+            </div>
+          ))}
+            
+          </div>
+        
         {lead.info && (
-          <div className="flex flex-col md:flex-row md:flex-row-reverse gap-8 py-12 ">
-            <div className="basis-2/3 text-md px-4">
+          <div className="flex flex-col md:flex-row  gap-8 py-12 ">
+            <div className="basis-2/3  text-sm px-4">
               <ReactMarkdown>{lead.info}</ReactMarkdown>
             </div>
           </div>

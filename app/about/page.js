@@ -82,14 +82,22 @@ export default async function Page() {
     
       const entries = Array.isArray(res.items[0]?.fields?.ethik) ? res.items[0].fields.ethik : [];
 
-      ethic.items = entries.map((ref, idx) => {
-        const fields = ref.fields || {};
-        return {
-          id: ref.sys.id || `ethik-${idx}`,
-          question: fields.titel || "Kein Titel",
-          answer: fields.beschreibung || "",
-        };
-      });
+      ethic.items = entries
+        .map((ref, idx) => {
+          const fields = ref.fields || {};
+          const title = fields.titel?.trim() || "";
+          const answer = fields.beschreibung?.trim() || "";
+
+          // Skip entirely if both title AND answer are empty
+          if (!title && !answer) return null;
+
+          return {
+            id: ref.sys.id || `ethik-${idx}`,
+            question: title,
+            answer: answer,
+          };
+        })
+        .filter(Boolean);
 
       diplomeText = res.items[0]?.fields?.qualifikation ?? "";
       diplomeImages = Array.isArray(res.items[0]?.fields?.diplome)
@@ -124,10 +132,10 @@ export default async function Page() {
 
         <div className="flex flex-col md:flex-row justify-evenly  gap-20  px-4">
        
-          <div className=" basis-3/7 space-y-4 md:ml-10">
+          <div className=" basis-3/7 space-y-4 md:ml-10 ">
                 {entry.text.split("\n\n").map((paragraph, idx) => (
               <Stagger order={1 + idx} key={idx}>
-                <ReactMarkdown components={{ p: ({ children }) => <div className="style-text">{children}</div> }}>
+                <ReactMarkdown components={{ p: ({ children }) => <div className="style-text prose">{children}</div> }}>
                   {paragraph.trim()}
                 </ReactMarkdown>
               </Stagger>
@@ -197,37 +205,56 @@ export default async function Page() {
         
                   </div>
 
-      <div className="flex flex-col md:flex-row   justify-stretch content-start gap-1  py-0 border-t-[0.5px]">
+      <div className="flex flex-col md:flex-row   justify-stretch content-start gap-1  py-10 border-t-[0.5px]">
           <div className="basis-2/7 px-4 pt-10 pb-10  space-y-2">
            <Stagger order={5}>
           <div className='md:pb-20 style-lead'>{diplomeText}</div >
         </Stagger>
           </div>
        
+<div className="flex items-center gap-6 h-[400px] w-full max-w-5xl mt-10 mx-auto">
+  {diplomeImages.map((img, idx) => (
+    <div
+      key={idx}
+      className="relative group flex-grow transition-all w-56 h-[400px] duration-300 hover:w-full overflow-hidden "
+    >
+      <Image
+        src={img.url}
+        alt={img.alt}
+        width={img.width}
+        height={img.height}
+        loading="lazy"
+        className="h-full w-full object-contain object-center"
+      />
 
+      {/* Overlay */}
+      <div
+        className=" flex flex-col justify-end p-10 text-white
+                   
+                   transition-all duration-300"
+      >
+        {/* Title */}
+        {img.alt && (
+          <h1 className="text-2xl font-medium">
+            {img.alt}
+          </h1>
+        )}
 
-
-        <div className="basis-4/7 pl-6 md:pl-12 flex flex-wrap gap-4">
-          {diplomeImages.map((img, idx) => (
-            <div key={idx} className="mx-auto w-90 flex flex-col items-center justify-center overflow-hidden">
-              <Image
-                src={img.url}
-                alt={img.alt}
-                width={img.width}
-                height={img.height}
-                className="object-cover max-h-120"
-              />
-              {img.description && (
-                <p className="mt-2 text-sm text-neutral-700  max-w-[80%]">
-                  {img.description}
-                </p>
-              )}
-            </div>
-          ))}
-        </div>
+        {/* Description */}
+        {img.description && (
+          <p className="text-sm mt-2 max-w-[90%]">
+            {img.description}
+          </p>
+        )}
       </div>
+    </div>
+  ))}
+</div>
 
-   
+
+
+
+   </div>
 
       </section>
 
@@ -244,43 +271,4 @@ export default async function Page() {
 
 
 
-
-//   return (
-//     <>
-//       <main>
-//              <section className="  mx-auto md:w-auto max-w-[2000px] px-4 pt-20">
-//                <div className="flex flex-col md:flex-row  justify-between content-start gap-1  py-12 border-b-1">
-//                  {/* Row 1 - Textual Content */}
-//                  <div className="space-y-6 ">
-//                    <h1 className="text-sm font-medium">{about.title || 'Über mich'}</h1>
-//                  </div>
-//                  <div className="space-y-6 ">
-//                    {paragraphs[0] && (
-//                      <h2 className="text-2xl ">{paragraphs[0]}</h2>
-//                    )}
-//                  </div>
-//                  <div className="space-y-4 font-normal">
-//                    {paragraphs.slice(1).map((p, idx) => (
-//                      <p key={idx} className="text-lg  ">{p}</p>
-//                    ))}
-//                  </div>
-// <div></div>
-//                  {/* Row 2 - Images */}
-//                  {images.map((img, idx) => (
-//                    <div key={idx} className="w-full flex justify-center overflow-hidden">
-//                      <Image
-//                        src={img.url}
-//                        alt={img.alt}
-//                        width={img.width}
-//                        height={img.height}
-//                        loading="lazy"
-//                        className="object-cover h-[550px] w-auto max-w-full"
-//                      />
-//                    </div>
-//                  ))}
-//                </div>
-//              </section>
-//            </main>
-//     </>
-//   );
-// }
+ 

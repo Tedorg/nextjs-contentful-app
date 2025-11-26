@@ -51,7 +51,7 @@ export default function ExampleForm({ submitText }) {
           className="text-sm font-medium text-[--color-text-default]"
           htmlFor="email"
         >
-          Email Addresse
+          E-Mail-Adresse
         </label>
         <input
           className="w-full bg-transparent border-b border-[--color-border-default] focus:border-[--color-primary] transition-colors duration-200 px-1 py-2 text-[--color-text-default] placeholder:text-[--color-text-muted] focus:outline-none"
@@ -68,7 +68,7 @@ export default function ExampleForm({ submitText }) {
           className="text-sm font-medium text-[--color-text-default]"
           htmlFor="number"
         >
-          Telefonnumber
+          Telefonnummer
         </label>
         <input
           className="w-full bg-transparent border-b border-[--color-border-default] focus:border-[--color-primary] transition-colors duration-200 px-1 py-2 text-[--color-text-default] placeholder:text-[--color-text-muted] focus:outline-none"

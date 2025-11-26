@@ -27,7 +27,7 @@ export default async function Page() {
       content_type: "kontakt",
       limit: 1,
     });
-    console.log(res)
+    
     kontakt = res.items[0]?.fields || {};
   } catch (error) {
     console.error("Error fetching content:", error);
@@ -72,7 +72,7 @@ export default async function Page() {
           <div className=" basis-2/7 space-y-1  flex flex-row md:flex-col my-10 ">
 
             {kontakt.adresse?.map((item, idx) => (
-              <div key={idx} className="px-3 style-text whitespace-pre-line">
+              <div key={idx} className="px-3 style-text prose whitespace-pre-line">
                 <Stagger order={0}>
                   {item.includes(";") ? (
                     item.split(";").map((part, i) => (
@@ -114,7 +114,7 @@ export default async function Page() {
           
             {kontakt.anreise?.split("\n").map((item, idx) => (
               <Stagger order={4 + idx} key={idx}>
-                <ReactMarkdown components={{ p: ({ children }) => < div className="indent-8 style-text">{children}</div> }}>
+                <ReactMarkdown components={{ p: ({ children }) => < div className="style-text">{children}</div> }}>
                   {item.trim()}
                 </ReactMarkdown>
               </Stagger>

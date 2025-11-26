@@ -7,7 +7,7 @@ export default function TextReveal({ text, delay = 0 }) {
   const words = text.split('\n');
 
   return (
-    <div className="overflow-hidden flex flex-wrap">
+    <div className="overflow-hidden flex flex-wrap p-2">
        
       {words.map((word, i) => (
         <motion.span

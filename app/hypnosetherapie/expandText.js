@@ -24,8 +24,8 @@ export default function ExpandText({ text, reference }) {
           <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-[--background] to-transparent pointer-events-none" />
         )}
         {expanded && reference && (
-          <div className="mt-6 border-t pt-4 text-sm text-gray-600">
-            <h3 className="font-semibold mb-1">Quellen</h3>
+          <div className="ml-5 mt-6 border-t pt-4 text-sm prose text-gray-600 indent-[-10px]">
+            <h3 className="">Quellen</h3>
             <ReactMarkdown>{reference}</ReactMarkdown>
           </div>
         )}

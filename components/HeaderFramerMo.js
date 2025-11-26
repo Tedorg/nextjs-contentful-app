@@ -16,6 +16,16 @@ const client = createClient({
 });
 
 export const MobileMenu = () => {
+const home ={
+
+CallToActionText:"",
+navItems:[],
+text:"",
+  buttonText:"",
+    buttonLink:""
+}
+ 
+
   const pathname = usePathname();
   const [isOpen, setOpen] = useState(false);
   const [dataOpen, setDataOpen] = useState(false);
@@ -59,22 +69,45 @@ export const MobileMenu = () => {
     const fetchContent = async () => {
       try {
         const content = await client.getEntries({ content_type: "home" });
+                  
+
+
         if (content?.items?.length) {
 
 
           setCallToActionText(content.items[0]?.fields?.callToActionText || "Termin");
 
           const contentTypes = await client.getContentTypes();
-          const filteredNav = contentTypes.items
-            .filter(item => {
-              const navField = item.fields.find(field => field.id === 'navMenu');
-              return navField && navField.name === "Nav-Menu";
-            })
-            .map(item => ({
-              href: `/${item.sys.id}`,
-              label: item.name
-            }));
-          setNavItems(filteredNav);
+          const navOrderList = content.items[0]?.fields?.navOrder.split(",");
+           const navOrder = Array.isArray(navOrderList)
+        ? [...navOrderList]
+        : [];
+           
+
+          const navMap = new Map();
+
+          contentTypes.items.forEach(item => {
+            const hasNavMenu = item.fields.some(field => field.id === 'navMenu');
+            if (hasNavMenu) {
+              
+            }
+
+            if (hasNavMenu && navOrderList.includes(item.name)) {
+                
+              navMap.set(item.name, {
+                href: `/${item.sys.id}`,
+                label: item.name
+              });
+            }
+          });
+
+          const orderedNav = navOrder
+            .map(name => navMap.get(name))
+            .filter(Boolean);
+
+          setNavItems(orderedNav);
+
+         
         }
       } catch (error) {
         console.error("Error fetching content:", error);
@@ -203,8 +236,7 @@ export const MobileMenu = () => {
                     <span className="text-md text-(--background)">{callToActionText}</span>
                   </button>
                 </Link>
-
-
+               
               </div>
 
 

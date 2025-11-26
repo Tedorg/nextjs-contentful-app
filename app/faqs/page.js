@@ -16,24 +16,40 @@ const client = createClient({
 });
 
 export default async function Page() {
-  let items = [];
-  let text = ""
+  const faq ={
+    items:[],
+    text:"",
+    buttonText:"",
+    buttonLink:""
+  }
+ 
 
   try {
 
 
     const content = await client.getEntries({ content_type: "faqs" });
     if (content?.items?.length) {
-      text = content.items[0].fields.beschreibung;
+      
+      faq.text = content.items[0].fields.beschreibung;
+
+      const buttonMatch = faq.text.match(/\[([^\]]+)\]\(([^)]+)\)\{\:\s*\.btn\s*\}/);
+      if (buttonMatch) {
+        faq.buttonText = buttonMatch[1];
+        faq.buttonLink = buttonMatch[2];
+        faq.text = faq.text.replace(buttonMatch[0], ''); // Remove button MD from text
+      }
+
       const FAQEntries = Array.isArray(content.includes.Entry)
         ? [...content.includes.Entry]
         : [];
+
+      
 
       const FAQLength = FAQEntries.length || [];
 
       for (const ref of FAQEntries) {
         const fields = ref.fields || {};
-        items.push({
+        faq.items.push({
           id: ref.sys.id,
           question: fields.item || fields.item || fields.title || "Frage fehlt",
           answer: fields.antwort || fields.answer || fields.description || fields.body || "",
@@ -53,15 +69,19 @@ return (
             <div className="style-header">FAQ</div>
           </div>
           <div className=" basis-8/10  ">
-            <Stagger items={items} />
-            <div className="mt-20 style-lead"><ReactMarkdown>{text}</ReactMarkdown></div>
-            <Link href="/kontakt">
-              <button className=" md:block mr-17 border-1 mt-4 rounded-3xl  bg-(--foreground)  py-1 px-4  hover:bg-gray-700 transition whitespace-nowrap">
-                <span className=" style-text text-(--background)">
-                  Kontakieren Sie mich
-                </span>
-              </button>
-            </Link>
+            <Stagger items={faq.items} />
+            <div className="my-10 style-lead"><ReactMarkdown>{faq.text}</ReactMarkdown></div>
+
+            {faq.buttonLink && faq.buttonText && (
+              <Link href={faq.buttonLink}>
+                <button className="style-inv-button">
+                
+                    {faq.buttonText}
+                  
+                </button>
+              </Link>
+            )}
+          
           </div>
         </div>
       </section>
