@@ -21,7 +21,7 @@ export const metadata = {
   },
 ],
   description:
-    "Hypnosetherapie Rahel Schmid.",
+    "Hypnosetherapie für Privatpersonen, Unternehmen und Sportvereine",
   keywords: [
     "Hypnosetherapie",
     "St. Gallen",
@@ -71,7 +71,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Rahel Schmid – Hypnosetherapie ",
     description:
-      "Hypnosetherapie  in St. Gallen.",
+      "Hypnosetherapie für Privatpersonen, Unternehmen und Sportvereine in St. Gallen.",
     images: ["/og/og-image.jpg"],
     creator: "@rahel_schmid",
   },
