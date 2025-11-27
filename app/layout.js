@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 export const metadata = {
   metadataBase: new URL("https://www.rahel-schmid.ch"),
   title: {
-    default: "Rahel Schmid – Hypnosetherapie & Wissenschaft",
+    default: "Rahel Schmid – Hypnosetherapie",
     template: "%s | Rahel Schmid Hypnosetherapie",
   },
   script: [
@@ -21,7 +21,7 @@ export const metadata = {
   },
 ],
   description:
-    "Hypnosetherapie für Kinder, Jugendliche und Erwachsene. Wissenschaftlich fundiert, einfühlsam und professionell – Praxis Rahel Schmid.",
+    "Hypnosetherapie - Rahel Schmid.",
   keywords: [
     "Hypnosetherapie",
     "St. Gallen",
@@ -47,9 +47,9 @@ export const metadata = {
     type: "website",
     locale: "de_CH",
     url: "https://www.rahel-schmid.ch",
-    title: "Rahel Schmid – Hypnosetherapie & Wissenschaft",
+    title: "Hypnosetherapie - Rahel Schmid.",
     description:
-      "Hypnosetherapie für Kinder, Jugendliche und Erwachsene. Wissenschaftlich fundiert, einfühlsam und professionell.",
+      "Hypnosetherapie.",
     siteName: "Rahel Schmid Hypnosetherapie",
     images: [
       {
@@ -69,9 +69,9 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Rahel Schmid – Hypnosetherapie & Wissenschaft",
+    title: "Rahel Schmid – Hypnosetherapie",
     description:
-      "Hypnosetherapie für Kinder, Jugendliche und Erwachsene in St. Gallen.",
+      "Hypnosetherapie f in St. Gallen.",
     images: ["/og/og-image.jpg"],
     creator: "@rahel_schmid",
   },
