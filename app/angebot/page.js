@@ -109,7 +109,7 @@ export default async function Page() {
         
         {lead.info && (
           <div className="flex flex-col md:flex-row  gap-8 py-12 ">
-            <div className="basis-2/3  text-sm px-4">
+            <div className="basis-3/3  text-sm px-4">
               <ReactMarkdown>{lead.info}</ReactMarkdown>
             </div>
           </div>

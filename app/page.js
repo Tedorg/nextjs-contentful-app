@@ -80,7 +80,7 @@ export default async function Home() {
         {/* <div className=" absolute inset-0 bg-gradient-to-br from-orange-500 to-red-200 opacity-90 "></div>  */}
         <div className=" self-center ">
           <div className=" w-[100%] md:w-[80%]  md:ml-20 text-foreground ">
-            <div className="text-xl md:text-2xl font-geller m-2" >
+            <div className="text-xl md:text-2xl font-commons  m-2" >
                 <TextReveal text={home.text}/>
             </div>
               {home.buttonText && (() => {
