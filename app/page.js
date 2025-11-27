@@ -10,8 +10,8 @@ import { MobileMenu } from "@/components/HeaderFramerMo";
 import Footer from "@/components/Footer";
 
 export const generateMetadata = () => ({
-  title: "Rahel Schmid – Hypnosetherapie & Wissenschaft",
-  description: "Hypnosetherapie für Kinder, Jugendliche und Erwachsene in St. Gallen. Wissenschaftlich fundiert und einfühlsam.",
+  title: "Rahel Schmid - Hypnosetherapie in St.Gallen",
+  description: "Professionelle Hypnosetherapie für Privatpersonen, Unternehmen und Sportvereine.",
 });
 
 const client = createClient({
