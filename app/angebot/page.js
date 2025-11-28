@@ -1,12 +1,14 @@
 import "../globals.css";
 import { createClient } from "contentful";
 import ReactMarkdown from "react-markdown";
-import TextReveal from "./textReveal";
+import TextReveal from "../../components/textReveal";
 
 export const generateMetadata = () => ({
   title: "Angebot – Hypnosetherapie St. Gallen",
   description: "Übersicht über therapeutische Angebote, Methoden und Leistungen von Rahel Schmid.",
 });
+
+export const revalidate = 300;
 
 const client = createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,

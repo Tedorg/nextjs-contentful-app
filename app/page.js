@@ -4,7 +4,7 @@ import { createClient } from "contentful";
 import ReactMarkdown from "react-markdown";
 
 import CmsGradient from '@/components/Gradient';
-import TextReveal from '@/components/textReveals'
+import TextReveal from '@/components/textReveal'
 import styles from "./page.module.css";
 import { MobileMenu } from "@/components/HeaderFramerMo";
 import Footer from "@/components/Footer";
@@ -13,6 +13,8 @@ export const generateMetadata = () => ({
   title: "Rahel Schmid - Hypnosetherapie in St.Gallen",
   description: "Professionelle Hypnosetherapie für Privatpersonen, Unternehmen und Sportvereine.",
 });
+
+export const revalidate = 300;
 
 const client = createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,

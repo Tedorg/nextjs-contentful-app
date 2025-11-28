@@ -40,6 +40,7 @@ export default function ExampleForm({ submitText }) {
           Name
         </label>
         <input
+          id="name"
           className="w-full bg-transparent border-b border-[--color-border-default] focus:border-[--color-primary] transition-colors duration-200 px-1 py-2 text-[--color-text-default] placeholder:text-[--color-text-muted] focus:outline-none"
           name="name"
           required
@@ -54,12 +55,14 @@ export default function ExampleForm({ submitText }) {
           E-Mail-Adresse
         </label>
         <input
+          id="email"
           className="w-full bg-transparent border-b border-[--color-border-default] focus:border-[--color-primary] transition-colors duration-200 px-1 py-2 text-[--color-text-default] placeholder:text-[--color-text-muted] focus:outline-none"
           type="email"
           name="email"
           required
           onInvalid={(e) => e.target.setCustomValidity('Bitte eine gültige Email eingeben.')}
           onInput={(e) => e.target.setCustomValidity('')}
+          placeholder="muster@domain.ch"
         />
         <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-500 text-sm" />
       </div>
@@ -71,11 +74,14 @@ export default function ExampleForm({ submitText }) {
           Telefonnummer
         </label>
         <input
+          id="number"
           className="w-full bg-transparent border-b border-[--color-border-default] focus:border-[--color-primary] transition-colors duration-200 px-1 py-2 text-[--color-text-default] placeholder:text-[--color-text-muted] focus:outline-none"
-           type="number"
+          type="tel"
           name="number"
+          placeholder="+41 79 123 45 67"
+          pattern="^(\+41\s?[1-9]\d\s?\d{3}\s?\d{2}\s?\d{2}|0[1-9]\d\s?\d{3}\s?\d{2}\s?\d{2})$"
           required
-          onInvalid={(e) => e.target.setCustomValidity('Bitte nur Zahlen eingeben.')}
+          onInvalid={(e) => e.target.setCustomValidity('Bitte eine gültige Telefonnummer eingeben. Beispiele: +41 79 123 45 67 oder 079 123 45 67')}
           onInput={(e) => e.target.setCustomValidity('')}
         />
         <ValidationError prefix="Telefonnummer" field="number" errors={state.errors} className="text-red-500 text-sm" />
@@ -88,6 +94,7 @@ export default function ExampleForm({ submitText }) {
           Nachricht
         </label>
         <textarea
+          id="message"
           className="w-full bg-transparent border-b border-[--color-border-default] focus:border-[--color-primary] transition-colors duration-200 px-1 py-2 text-[--color-text-default] placeholder:text-[--color-text-muted] focus:outline-none"
           name="message"
           

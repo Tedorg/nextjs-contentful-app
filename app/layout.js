@@ -1,5 +1,6 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import CookieBanner from '@/components/cookieBanner';
+
 import Script from "next/script";
 
 import { MobileMenu} from "@/components/HeaderFramerMo";
@@ -12,13 +13,7 @@ export const metadata = {
     template: "%s | Rahel Schmid Hypnosetherapie",
   },
   script: [
-  {
-    src: "https://consent.cookiebot.com/uc.js",
-    id: "Cookiebot",
-    "data-cbid": "8bfa8bbb-3bdd-4d20-9d3e-4cd73a2602c9",
-    "data-blockingmode": "auto",
-    type: "text/javascript",
-  },
+ 
 ],
   description:
     "Professionelle Hypnosetherapie für Privatpersonen, Unternehmen und Sportvereine.",
@@ -91,7 +86,7 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
+      { url: "/icon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
       { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon-64.png", sizes: "64x64", type: "image/png" },
       { url: "/favicon-180.png", sizes: "180x180", type: "image/png" }, // Apple
@@ -109,16 +104,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="de">
       <body>
-        <Script
-  id="Cookiebot"
-  src="https://consent.cookiebot.com/uc.js"
-  data-cbid="8bfa8bbb-3bdd-4d20-9d3e-4cd73a2602c9"
-  data-blockingmode="auto"
-  strategy="beforeInteractive"
-/>
+       
         <MobileMenu />
         {children}
         <Footer />
+         <CookieBanner />
       </body>
     </html>
   )

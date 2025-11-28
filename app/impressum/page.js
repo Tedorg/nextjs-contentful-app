@@ -3,7 +3,7 @@ import "../globals.css";
 import { createClient } from "contentful";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
-
+export const revalidate = 300;
 
 
 const client = createClient({

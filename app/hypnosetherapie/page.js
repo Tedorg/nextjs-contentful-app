@@ -10,6 +10,8 @@ export const generateMetadata = () => ({
   description: "Informationen zur Methode der Hypnosetherapie, Anwendungsbereiche und wissenschaftlicher Hintergrund.",
 });
 
+export const revalidate = 300;
+
 // Initialize Contentful client
 
 const client = createClient({

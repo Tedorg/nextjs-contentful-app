@@ -13,6 +13,8 @@ export const generateMetadata = () => ({
   description: "Kontaktinformationen, Praxisadresse und Anreisebeschreibung zur Praxis Rahel Schmid.",
 });
 
+export const revalidate = 300;
+
 export default async function Page() {
   let kontakt = {};
 
