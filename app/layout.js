@@ -104,7 +104,18 @@ export default function RootLayout({ children }) {
   return (
     <html lang="de">
       <body>
-       
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-GNC4CX31RG"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-GNC4CX31RG');
+          `}
+        </Script>
         <MobileMenu />
         {children}
         <Footer />
