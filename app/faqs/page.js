@@ -10,6 +10,8 @@ export const generateMetadata = () => ({
   description: "Antworten auf die wichtigsten Fragen rund um Hypnosetherapie und den Ablauf.",
 });
 
+export const revalidate = 300;
+
 const client = createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
   accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,

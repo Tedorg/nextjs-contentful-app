@@ -1,5 +1,6 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import CookieBanner from '@/components/cookieBanner';
+
 import Script from "next/script";
 
 import { MobileMenu} from "@/components/HeaderFramerMo";
@@ -8,31 +9,47 @@ import Footer from "@/components/Footer";
 export const metadata = {
   metadataBase: new URL("https://www.rahel-schmid.ch"),
   title: {
+<<<<<<< HEAD
     default: "Rahel Schmid – Hypnosetherapie",
+=======
+    default: "Rahel Schmid - Hypnosetherapie in St.Gallen",
+>>>>>>> main
     template: "%s | Rahel Schmid Hypnosetherapie",
   },
   script: [
-  {
-    src: "https://consent.cookiebot.com/uc.js",
-    id: "Cookiebot",
-    "data-cbid": "8bfa8bbb-3bdd-4d20-9d3e-4cd73a2602c9",
-    "data-blockingmode": "auto",
-    type: "text/javascript",
-  },
+ 
 ],
   description:
+<<<<<<< HEAD
     "Hypnosetherapie - Rahel Schmid.",
+=======
+    "Professionelle Hypnosetherapie für Privatpersonen, Unternehmen und Sportvereine.",
+>>>>>>> main
   keywords: [
-    "Hypnosetherapie",
-    "St. Gallen",
-    "Therapie",
-    "Angst",
-    "Stress",
-    "Wohlbefinden",
-    "Kinderhypnose",
-    "Jugendliche",
-    "Schule",
-    "Mentale Gesundheit",
+    "Hypnose",
+"Hypnosetherapie",
+"Therapie",
+"Komplementärmedizin",
+"St. Gallen",
+"Mentale Gesundheit",
+"Geistige Entwicklung",
+"Persönliches Wachstum",
+"Persönliche Weiterentwicklung",
+"Ressource",
+"Angst",
+"Phobie",
+"Stress",
+"Zwang",
+"Sucht",
+"Gewichtsreduktion",
+"Rauchentwöhnung",
+"Schmerztherapie",
+"Mobbing",
+"Blockaden",
+"Wohlbefinden",
+"Kinderhypnose",
+"Unternehmen",
+"Sportvereine",
   ],
   authors: [{ name: "Rahel Schmid" }],
   creator: "Rahel Schmid",
@@ -47,16 +64,23 @@ export const metadata = {
     type: "website",
     locale: "de_CH",
     url: "https://www.rahel-schmid.ch",
+<<<<<<< HEAD
     title: "Hypnosetherapie - Rahel Schmid.",
     description:
       "Hypnosetherapie.",
     siteName: "Rahel Schmid Hypnosetherapie",
+=======
+    title: "Rahel Schmid - Hypnosetherapie in St.Gallen",
+    description:
+      "Professionelle Hypnosetherapie für Privatpersonen, Unternehmen und Sportvereine.",
+    siteName: "Rahel Schmid - Hypnosetherapie in St.Gallen",
+>>>>>>> main
     images: [
       {
         url: "/og/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Praxis für Hypnosetherapie – Rahel Schmid",
+        alt: "Rahel Schmid - Hypnosetherapie in St.Gallen",
       },
     ],
   },
@@ -69,15 +93,21 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
+<<<<<<< HEAD
     title: "Rahel Schmid – Hypnosetherapie",
     description:
       "Hypnosetherapie f in St. Gallen.",
+=======
+    title: "Rahel Schmid - Hypnosetherapie in St.Gallen ",
+    description:
+      "Hypnosetherapie für Privatpersonen, Unternehmen und Sportvereine in St. Gallen.",
+>>>>>>> main
     images: ["/og/og-image.jpg"],
     creator: "@rahel_schmid",
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
+      { url: "/icon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
       { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon-64.png", sizes: "64x64", type: "image/png" },
       { url: "/favicon-180.png", sizes: "180x180", type: "image/png" }, // Apple
@@ -96,15 +126,21 @@ export default function RootLayout({ children }) {
     <html lang="de">
       <body>
         <Script
-  id="Cookiebot"
-  src="https://consent.cookiebot.com/uc.js"
-  data-cbid="8bfa8bbb-3bdd-4d20-9d3e-4cd73a2602c9"
-  data-blockingmode="auto"
-  strategy="beforeInteractive"
-/>
+          src="https://www.googletagmanager.com/gtag/js?id=G-GNC4CX31RG"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-GNC4CX31RG');
+          `}
+        </Script>
         <MobileMenu />
         {children}
         <Footer />
+         <CookieBanner />
       </body>
     </html>
   )

@@ -11,6 +11,8 @@ export const generateMetadata = () => ({
   description: "Einblick in die therapeutische Arbeit, Qualifikationen und ethischen Leitlinien von Rahel Schmid.",
 });
 
+export const revalidate = 300;
+
 
 export default async function Page() {
   let items = [];
