@@ -20,7 +20,7 @@ export default function CookieBanner() {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 px-4 py-3 text-sm shadow-md flex flex-col md:flex-row items-center justify-between gap-2">
       <p className="text-gray-800">
-        Diese Website verwendet Cookies, um dein Nutzungserlebnis zu verbessern.
+        Diese Website verwendet Cookies, um dein Nutzungserlebnis zu verbessern. bitte bestätige mit "ok".
       </p>
       <button
         onClick={acceptCookies}
