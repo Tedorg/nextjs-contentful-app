@@ -1,7 +1,5 @@
 import "../globals.css";
 
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import MapView from "./MapView";
 import Stagger from "./stagger"
 import Form from "./contactForm"

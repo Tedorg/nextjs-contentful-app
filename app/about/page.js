@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { getEntry, getImageUrl } from "@/lib/contentful";
-export const revalidate = 0;
 import ReactMarkdown from "react-markdown";
 import Stagger from "../../components/stagger";
 import TextReveal from "../../components/textReveal";
