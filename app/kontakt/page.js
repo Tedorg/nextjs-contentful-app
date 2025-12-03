@@ -1,8 +1,6 @@
 import "../globals.css";
 
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import MapView from "./MapView";
+import Maps from "./googleMaps";
 import Stagger from "./stagger"
 import Form from "./contactForm"
 import ReactMarkdown from "react-markdown";
@@ -34,10 +32,11 @@ export default async function Page() {
     console.error("Error fetching content:", error);
   }
 
-  let coordinates = null;
+  let coordinates;
   if (kontakt.karte) {
     try {
       const [lat, lng] = kontakt.karte.split(",").map((val) => parseFloat(val.trim()));
+      
       coordinates = [lat, lng];
     } catch (e) {
       console.error("Invalid coordinates:", kontakt.karte);
@@ -124,7 +123,7 @@ export default async function Page() {
 
           {/* Right Column: Map */}
           <div className="basis-4/7 my-10 p-3">
-            {coordinates && <MapView coordinates={coordinates} />}
+            {coordinates && <Maps coordinates={coordinates} />}
           </div>
 
 
